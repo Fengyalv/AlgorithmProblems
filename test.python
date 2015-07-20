@@ -1,0 +1,24 @@
+def getNum( n ):
+	if n <= 1 :
+		return 1
+	else:
+		return n * getNum(n - 1)
+
+listAnswer = {}
+
+def getPermutation( n , k ):
+	numOrder = k
+	for i in range(0 , n):
+		print "numOrder = " + str(numOrder)
+		num = getNum(n - i - 1)
+		if num == 1 :
+			listAnswer[i] = 1
+		else :
+			listAnswer[i] = numOrder / num + 1
+		numOrder = numOrder % num
+		print "numOrder = " + str(numOrder)
+		print "num = " + str(num)
+		print "listAnswer[i] = " + str(listAnswer[i])
+	return listAnswer
+
+print getPermutation(3 , 6)
